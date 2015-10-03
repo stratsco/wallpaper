@@ -86,21 +86,8 @@
       background-size: cover;
     }
 
-    #pc-only {
-      display: none;
-    }
-
-    @media only screen and (max-width: 1480px) {
-      #pc-only-not-needed {
-        display: block;
-        position: fixed;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        font-size: 48px;
-        background-color: red;
-      }
+    @media only screen and (max-width: 1000px) {
+      /* not yet */
     }
   </style>
 </head>
@@ -147,7 +134,6 @@
     <button id="go-button">Hide this box</button>
     <br> When you click the button above, the page will go full screen. Screenshot the page and you can set it as your desktop background. Exit fullscreen with the esc key. If things look wonky, try your browser's zoom out function.
   </div>
-  <div id="pc-only">Your screen is too small. Please visit from your PC, or zoom out using Ctrl+- if you have a 1440x900 or lower res monitor.</div>
   <script>
     var input = document.getElementById("file-picker");
     var input2 = document.getElementById("hl-picker");
