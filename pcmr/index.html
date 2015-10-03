@@ -135,6 +135,10 @@
     <br> (type color name, hex color, or rgba):
     <br>
     <input type="text" id="pc-txt-picker" value="#000000"></input>
+    <br> Choose font
+    <br> (type font name, may cause layout issues):
+    <br>
+    <input type="text" id="font-picker" value="Roboto"></input>
     <br>
     <input type="checkbox" id="shadow-picker">Shadow</input>
     <br>
@@ -152,6 +156,7 @@
     var input4 = document.getElementById("pc-txt-picker");
     var input5 = document.getElementById("shadow-picker");
     var input6 = document.getElementById("blur-picker");
+    var input7 = document.getElementById("font-picker");
 
     function setBackgroundImage() {
       if (input.files && input.files[0]) {
@@ -176,6 +181,10 @@
 
     function setPCTxtCol() {
       document.getElementById("pc").style.color = input4.value;
+    }
+
+    function setFont() {
+      document.body.style.fontFamily = input7.value;
     }
 
     function setShadow() {
@@ -222,6 +231,7 @@
     input4.addEventListener("input", setPCTxtCol);
     input5.addEventListener("change", setShadow);
     input6.addEventListener("change", setBlur);
+    input7.addEventListener("input", setFont);
 
     function exitHandler() {
       if ((document.webkitFullscreenElement || document.mozFullscreenElement || document.fullscreenElement) == null) {
