@@ -1,0 +1,155 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>PC Master Race</title>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
+  <style>
+    body {
+      color: white;
+      font-size: 72px;
+      font-family: Roboto;
+    }
+
+    *:-webkit-full-screen {
+      cursor: none;
+    }
+
+    *:-moz-full-screen {
+      cursor: none;
+    }
+
+    *:-ms-fullscreen {
+      cursor: none;
+    }
+
+    *:fullscreen {
+      cursor: none;
+    }
+
+    .pc {
+      background-color: #FACA04;
+      padding: 15px 20px 15px 20px;
+      color: black;
+      font-weight: bold;
+    }
+
+    .mr {
+      padding: 15px 15px 15px 0px;
+      margin-right: 15px;
+      border-right: 2px solid #FACA04;
+    }
+
+    div.left {
+      float: left;
+    }
+
+    div.right {
+      float: right;
+      font-size: 40px;
+      font-weight: lighter;
+    }
+
+    #text {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      /* bring your own prefixes */
+      transform: translate(-50%, -50%);
+    }
+
+    #gen-box {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      padding: 20px;
+      background-color: rgba(175, 175, 175, 0.8);
+      border-radius: 20px;
+      font-size: 12px;
+      max-width: 250px;
+    }
+
+    #cont {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: black;
+      background-size: cover;
+    }
+  </style>
+</head>
+
+<body id="body">
+  <div id="cont">
+    <div id="text">
+      <div class="left">
+        <span class="pc">PC</span>
+        <span class="mr">Master Race</span>
+      </div>
+      <div class="right">
+        <span>behold
+          <br>true glory</span>
+      </div>
+    </div>
+  </div>
+  <div id="gen-box">
+    Choose a background image:
+    <br>
+    <input id="file-picker" type="file"></input>
+    <br>
+    <button id="go-button">Hide this box</button>
+    <br> When you click the button above, the page will go full screen. Print screen the page and you can set it as your desktop background. Exit fullscreen with the esc key.
+  </div>
+  <script>
+    var input = document.getElementById("file-picker");
+
+    function setBackgroundImage() {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+          document.getElementById("cont").style.backgroundImage = 'url(' + e.target.result + ')';
+        };
+
+        reader.readAsDataURL(input.files[0]);
+      };
+    };
+
+    function hideBox() {
+      var elem = document.getElementById("body");
+      document.getElementById("gen-box").style.display = "none";
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      } else if (elem.msRequestFullscreen) {
+        elem.msRequestFullscreen();
+      } else if (elem.mozRequestFullScreen) {
+        elem.mozRequestFullScreen();
+      } else if (elem.webkitRequestFullscreen) {
+        elem.webkitRequestFullscreen();
+      };
+    };
+
+    document.getElementById("go-button").addEventListener("click", hideBox);
+    input.addEventListener("change", setBackgroundImage);
+
+    function exitHandler() {
+      if ((document.webkitFullscreenElement || document.mozFullscreenElement || document.fullscreenElement) == null) {
+        document.getElementById("gen-box").style.display = "block";
+      }
+    }
+
+
+
+    document.addEventListener('webkitfullscreenchange', exitHandler, false);
+    document.addEventListener('mozfullscreenchange', exitHandler, false);
+    document.addEventListener('fullscreenchange', exitHandler, false);
+    document.addEventListener('MSFullscreenChange', exitHandler, false);
+  </script>
+</body>
+
+</html>
