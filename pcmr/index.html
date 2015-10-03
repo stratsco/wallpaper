@@ -88,8 +88,8 @@
   <div id="cont">
     <div id="text">
       <div class="left">
-        <span class="pc">PC</span>
-        <span class="mr">Master Race</span>
+        <span id="pc" class="pc">PC</span>
+        <span id="mr" class="mr">Master Race</span>
       </div>
       <div class="right">
         <span>behold
@@ -101,12 +101,30 @@
     Choose a background image:
     <br>
     <input id="file-picker" type="file"></input>
+    <br> Choose a highlight colour
+    <br> (type color name, hex color, or rgba):
+    <br>
+    <input type="text" id="hl-picker" value="#FACA04"></input>
+    <br> Choose a text colour
+    <br> (type color name, hex color, or rgba):
+    <br>
+    <input type="text" id="txt-picker" value="#FFFFFF"></input>
+    <br> Choose PC text colour
+    <br> (type color name, hex color, or rgba):
+    <br>
+    <input type="text" id="pc-txt-picker" value="#000000"></input>
+    <br>
+    <input type="checkbox" id="shadow-picker">Shadow</input>
     <br>
     <button id="go-button">Hide this box</button>
     <br> When you click the button above, the page will go full screen. Screenshot the page and you can set it as your desktop background. Exit fullscreen with the esc key.
   </div>
   <script>
     var input = document.getElementById("file-picker");
+    var input2 = document.getElementById("hl-picker");
+    var input3 = document.getElementById("txt-picker");
+    var input4 = document.getElementById("pc-txt-picker");
+    var input5 = document.getElementById("shadow-picker");
 
     function setBackgroundImage() {
       if (input.files && input.files[0]) {
@@ -119,6 +137,28 @@
         reader.readAsDataURL(input.files[0]);
       };
     };
+
+    function setHlCol() {
+      document.getElementById("pc").style.backgroundColor = input2.value;
+      document.getElementById("mr").style.borderRightColor = input2.value;
+    }
+
+    function setTxtCol() {
+      document.getElementById("text").style.color = input3.value;
+    }
+
+    function setPCTxtCol() {
+      document.getElementById("pc").style.color = input4.value;
+    }
+
+    function setShadow() {
+      if (input5.checked) {
+        document.getElementById("text").style.textShadow = "0 0 10px #000";
+          document.getElementById("pc").style.textShadow = "0 0 0";
+      } else {
+        document.getElementById("text").style.textShadow = "";
+      }
+    }
 
     function hideBox() {
       var elem = document.getElementById("body");
@@ -136,6 +176,10 @@
 
     document.getElementById("go-button").addEventListener("click", hideBox);
     input.addEventListener("change", setBackgroundImage);
+    input2.addEventListener("input", setHlCol);
+    input3.addEventListener("input", setTxtCol);
+    input4.addEventListener("input", setPCTxtCol);
+    input5.addEventListener("change", setShadow);
 
     function exitHandler() {
       if ((document.webkitFullscreenElement || document.mozFullscreenElement || document.fullscreenElement) == null) {
