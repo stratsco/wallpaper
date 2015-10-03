@@ -103,15 +103,15 @@
 
 <body id="body">
   <div id="cont">
-    <div id="text">
-      <div class="left">
-        <span id="pc" class="pc">PC</span>
-        <span id="mr" class="mr">Master Race</span>
-      </div>
-      <div class="right">
-        <span>behold
-          <br>true glory</span>
-      </div>
+  </div>
+  <div id="text">
+    <div class="left">
+      <span id="pc" class="pc">PC</span>
+      <span id="mr" class="mr">Master Race</span>
+    </div>
+    <div class="right">
+      <span>behold
+        <br>true glory</span>
     </div>
   </div>
   <div id="gen-box">
@@ -133,6 +133,8 @@
     <br>
     <input type="checkbox" id="shadow-picker">Shadow</input>
     <br>
+    <input type="checkbox" id="blur-picker">Blur</input>
+    <br>
     <button id="go-button">Hide this box</button>
     <br> When you click the button above, the page will go full screen. Screenshot the page and you can set it as your desktop background. Exit fullscreen with the esc key. If things look wonky, try your browser's zoom out function.
   </div>
@@ -143,6 +145,7 @@
     var input3 = document.getElementById("txt-picker");
     var input4 = document.getElementById("pc-txt-picker");
     var input5 = document.getElementById("shadow-picker");
+    var input6 = document.getElementById("blur-picker");
 
     function setBackgroundImage() {
       if (input.files && input.files[0]) {
@@ -178,6 +181,20 @@
       }
     }
 
+    function setBlur() {
+      if (input6.checked) {
+        document.getElementById("cont").style.webkitFilter = "blur(5px)";
+        document.getElementById("cont").style.mozFilter = "blur(5px)";
+        document.getElementById("cont").style.filter = "blur(5px)";
+        document.getElementById("cont").style.transform = "scale(1.01)"
+      } else {
+        document.getElementById("cont").style.webkitFilter = "";
+        document.getElementById("cont").style.mozFilter = "";
+        document.getElementById("cont").style.filter = "";
+        document.getElementById("cont").style.transform = ""
+      }
+    }
+
     function hideBox() {
       var elem = document.getElementById("body");
       document.getElementById("gen-box").style.display = "none";
@@ -198,6 +215,7 @@
     input3.addEventListener("input", setTxtCol);
     input4.addEventListener("input", setPCTxtCol);
     input5.addEventListener("change", setShadow);
+    input6.addEventListener("change", setBlur);
 
     function exitHandler() {
       if ((document.webkitFullscreenElement || document.mozFullscreenElement || document.fullscreenElement) == null) {
