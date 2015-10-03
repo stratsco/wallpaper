@@ -81,6 +81,23 @@
       background-color: black;
       background-size: cover;
     }
+
+    #pc-only {
+      display: none;
+    }
+
+    @media only screen and (max-width: 1480px) {
+      #pc-only {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        font-size: 48px;
+        background-color: red;
+      }
+    }
   </style>
 </head>
 
@@ -119,6 +136,7 @@
     <button id="go-button">Hide this box</button>
     <br> When you click the button above, the page will go full screen. Screenshot the page and you can set it as your desktop background. Exit fullscreen with the esc key.
   </div>
+  <div id="pc-only">Your screen is too small. Please visit from your PC, or use your browser's built in zoom out function.</div>
   <script>
     var input = document.getElementById("file-picker");
     var input2 = document.getElementById("hl-picker");
@@ -154,7 +172,7 @@
     function setShadow() {
       if (input5.checked) {
         document.getElementById("text").style.textShadow = "0 0 3px #000";
-          document.getElementById("pc").style.textShadow = "0 0 0";
+        document.getElementById("pc").style.textShadow = "0 0 0";
       } else {
         document.getElementById("text").style.textShadow = "";
       }
