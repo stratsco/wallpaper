@@ -109,6 +109,10 @@
     Choose a background image:
     <br>
     <input id="file-picker" type="file"></input>
+    <br> Choose a flat background colour
+    <br> (type color name, hex color, or rgba):
+    <br>
+    <input type="text" id="bgc-picker" value="#000000"></input>
     <br> Choose a highlight colour
     <br> (type color name, hex color, or rgba):
     <br>
@@ -142,6 +146,7 @@
     var input5 = document.getElementById("shadow-picker");
     var input6 = document.getElementById("blur-picker");
     var input7 = document.getElementById("font-picker");
+    var input8 = document.getElementById("bgc-picker");
 
     function setBackgroundImage() {
       if (input.files && input.files[0]) {
@@ -170,6 +175,10 @@
 
     function setFont() {
       document.body.style.fontFamily = input7.value;
+    }
+
+    function setBgc() {
+      document.getElementById("cont").style.backgroundColor = input8.value;
     }
 
     function setShadow() {
@@ -212,6 +221,7 @@
     document.getElementById("go-button").addEventListener("click", hideBox);
     input.addEventListener("change", setBackgroundImage);
     input2.addEventListener("input", setHlCol);
+    input8.addEventListener("input", setBgc);
     input3.addEventListener("input", setTxtCol);
     input4.addEventListener("input", setPCTxtCol);
     input5.addEventListener("change", setShadow);
