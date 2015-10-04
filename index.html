@@ -114,7 +114,7 @@
     </div>
   </div>
 
-  <div id="options-help">Move cursor to left edge to show options</div>
+  <div id="options-help">Move cursor to (or touch) left edge to show options</div>
 
   <script>
     var input = document.getElementById("file-picker");
@@ -327,9 +327,15 @@
       _drag_init(this);
       return false;
     };
+    document.getElementById('text').ontouchstart = function() {
+      _drag_init(this);
+      return false;
+    };
 
     document.onmousemove = _move_elem;
+    document.ontouchmove = _move_elem;
     document.onmouseup = _destroy;
+    document.ontouchend = _destroy;
     input5.click();
 
 
