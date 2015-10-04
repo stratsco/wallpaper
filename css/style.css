@@ -13,6 +13,7 @@ body {
   background-size: cover;
   z-index: -9999;
 }
+/* temporarily removed
 *:-webkit-full-screen {
   cursor: none;
 }
@@ -24,7 +25,7 @@ body {
 }
 *:fullscreen {
   cursor: none;
-}
+}*/
 .pc {
   background-color: #FACA04;
   padding: 1px 20px 1px 20px;
