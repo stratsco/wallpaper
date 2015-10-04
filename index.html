@@ -245,7 +245,7 @@
     }
 
     function setWiderLayout() {
-      document.getElementById("text").style.width = (900 + Number(input13.value)) + "px";
+      document.getElementById("text").style.width = (document.getElementById('text').offsetWidth + Number(input13.value)) + "px";
     }
 
 
