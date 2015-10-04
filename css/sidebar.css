@@ -106,7 +106,7 @@ nav div {
   transition: all .4s;
   cursor: pointer;
 }
-.file-picker input {
+.file-picker input, button{
   position: absolute;
   display: inline-block;
   left: 0;
@@ -115,7 +115,7 @@ nav div {
   cursor: pointer;
 }
 .file-picker input:hover + label,
-.file-picker input:focus + label {
+.file-picker button:focus + label {
   background: #ff9500;
   color: #fff;
 }
