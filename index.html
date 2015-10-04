@@ -321,7 +321,7 @@
     input12.addEventListener("input", setGloryTxt);
     input13.addEventListener("input", setWiderLayout);
     input14.addEventListener("input", setFontSize);
-    
+
     function doCentre() {
       var w = window.innerWidth;
       var h = window.innerHeight;
@@ -332,7 +332,6 @@
       d.style.left = (w / 2) - (divW / 2) + "px";
     };
 
-    document.body.onload = doCentre();
     window.addEventListener("resize", doCentre);
 
     /* Future events for leaving full screen
@@ -490,6 +489,7 @@
       requestAnimationFrame(animate);
     }
     animate();
+    setTimeout(doCentre, 100);
   </script>
 </body>
 
