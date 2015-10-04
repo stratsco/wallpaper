@@ -42,6 +42,8 @@ div.right #glory {
 #text {
   position: fixed;
   width: 900px;
+  top: -500px;
+  left: -500px;
 }
 #text * {
   cursor: move;
