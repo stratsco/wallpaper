@@ -75,6 +75,9 @@
       <br>
       <br>
       <input type="text" id="txt-pc-picker" value="PC" maxlength="2"></input>
+      <input type="text" id="txt-mr-picker" value="MASTER RACE"></input>
+      <input type="text" id="txt-behold-picker" value="behold"></input>
+      <input type="text" id="txt-glory-picker" value="true glory"></input>
     </p>
     <p>
       Choose font
@@ -107,7 +110,7 @@
     </div>
 
     <div class="right">
-      <span>behold</span>
+      <span id="behold">behold</span>
       <br>
       <span id="glory">true glory</span>
     </div>
@@ -125,6 +128,9 @@
     var input7 = document.getElementById("font-picker");
     var input8 = document.getElementById("bgc-picker");
     var input9 = document.getElementById("txt-pc-picker");
+    var input10 = document.getElementById("txt-mr-picker");
+    var input11 = document.getElementById("txt-behold-picker");
+    var input12 = document.getElementById("txt-glory-picker");
     var repeatColor;
     var selColor;
 
@@ -179,6 +185,18 @@
 
     function setPCTxt() {
       document.getElementById("pc").innerHTML = input9.value;
+    }
+
+    function setMRTxt() {
+      document.getElementById("mr").innerHTML = input10.value;
+    }
+
+    function setBeholdTxt() {
+      document.getElementById("behold").innerHTML = input11.value;
+    }
+
+    function setGloryTxt() {
+      document.getElementById("glory").innerHTML = input12.value;
     }
 
     function setFont() {
@@ -272,6 +290,9 @@
     input6.addEventListener("change", setBlur);
     input7.addEventListener("input", setFont);
     input9.addEventListener("input", setPCTxt);
+    input10.addEventListener("input", setMRTxt);
+    input11.addEventListener("input", setBeholdTxt);
+    input12.addEventListener("input", setGloryTxt);
 
     /* Future events for leaving full screen
     function exitHandler() {
