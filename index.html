@@ -87,6 +87,12 @@
       <input type="text" id="font-picker" value="Roboto"></input>
     </p>
     <p>
+      Change font size:
+      <br>
+      <br>
+      <input id="fs-input" type="range" min="0.01" step="0.01" max="2.0" value="1.0"></input>
+    </p>
+    <p>
       Increase width to fix overspill:
       <br>
       <br>
@@ -140,9 +146,10 @@
     var input11 = document.getElementById("txt-behold-picker");
     var input12 = document.getElementById("txt-glory-picker");
     var input13 = document.getElementById("width-input");
+    var input14 = document.getElementById("fs-input");
+    var orgWidth = document.getElementById('text').offsetWidth;
     var repeatColor;
     var selColor;
-    var orgWidth = document.getElementById('text').offsetWidth;
 
     function displayColorWheel(nameOption) {
 
@@ -249,6 +256,10 @@
       document.getElementById("text").style.width = (orgWidth + Number(input13.value)) + "px";
     }
 
+    function setFontSize() {
+      document.getElementById("text").style.transform = "scale(" + Number(input14.value) + ")";
+    }
+
 
     function hideBox() {
       document.getElementById("options-help").style.display = "none";
@@ -309,6 +320,7 @@
     input11.addEventListener("input", setBeholdTxt);
     input12.addEventListener("input", setGloryTxt);
     input13.addEventListener("input", setWiderLayout);
+    input14.addEventListener("input", setFontSize);
 
     /* Future events for leaving full screen
     function exitHandler() {
@@ -331,6 +343,7 @@
       y_elem = 0; // Stores top, left values (edge) of the element
     // Will be called when user starts dragging an element
     function _drag_init(elem) {
+      document.body.onresize = false;
       // Store the object of the element which needs to be moved
       selected = elem;
       x_elem = x_pos - selected.offsetLeft;
@@ -464,6 +477,20 @@
       requestAnimationFrame(animate);
     }
     animate();
+
+
+    function doCentre() {
+      var w = window.innerWidth;
+      var h = window.innerHeight;
+      var d = document.getElementById('text');
+      var divW = d.offsetWidth;
+      var divH = d.offsetHeight
+      d.style.top = (h / 2) - (divH / 2) + "px";
+      d.style.left = (w / 2) - (divW / 2) + "px";
+    };
+
+    window.onload = doCentre();
+    document.body.onresize = doCentre();
   </script>
 </body>
 

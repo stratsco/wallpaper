@@ -13,19 +13,6 @@ body {
   background-size: cover;
   z-index: -9999;
 }
-/* temporarily removed
-*:-webkit-full-screen {
-  cursor: none;
-}
-*:-moz-full-screen {
-  cursor: none;
-}
-*:-ms-fullscreen {
-  cursor: none;
-}
-*:fullscreen {
-  cursor: none;
-}*/
 .pc {
   background-color: #FACA04;
   padding: 1px 20px 1px 20px;
@@ -55,10 +42,6 @@ div.right #glory {
 #text {
   position: fixed;
   width: 900px;
-  top: 50%;
-  left: 50%;
-  /* bring your own prefixes */
-  transform: translate(-50%, -50%);
 }
 #text * {
   cursor: move;
@@ -71,30 +54,6 @@ div.right #glory {
   right: 0;
   text-align: center;
 }
-
-/* Deprecated */
-
-
-/*#gen-box {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    padding: 20px;
-    background-color: rgba(175, 175, 175, 0.8);
-    border-radius: 20px;
-    font-size: 12px;
-    max-width: 250px;
-}*/
-
-@media only screen and (max-width: 1000px) {
-  /* not yet */
-}
-
-/* Color Picker */
-
-
-/* Originaly by Danie Clawson http://codepen.io/cl4ws0n/pen/GwFiC*/
-
 .wrapper {
   width: 145px;
   text-align: center;
@@ -105,28 +64,24 @@ canvas {
   border-radius: 50%;
   cursor: pointer;
 }
-
-@media screen and (max-width: 481px){
-    .pc{
-        font-size: 23px;
-        padding: 2px 10px 3px 10px;
-    }
-    
-    .mr{
-        font-size: 20px;
-        padding: 15px 10px 15px 5px;
-        border-right: 4px solid #FACA04;
-        margin-right: 5px;
-    }
-    
-    div.right{
-        font-size: 20px;
-        line-height: 15px;
-    }
-    
-    #text{
-        width: 300px;
-        margin-left: auto;
-        margin-right: auto;
-    }
+@media screen and (max-width: 481px) {
+  .pc {
+    font-size: 23px;
+    padding: 2px 10px 3px 10px;
+  }
+  .mr {
+    font-size: 20px;
+    padding: 15px 10px 15px 5px;
+    border-right: 4px solid #FACA04;
+    margin-right: 5px;
+  }
+  div.right {
+    font-size: 20px;
+    line-height: 15px;
+  }
+  #text {
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
