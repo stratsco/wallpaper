@@ -105,3 +105,28 @@ canvas {
   border-radius: 50%;
   cursor: pointer;
 }
+
+@media screen and (max-width: 481px){
+    .pc{
+        font-size: 23px;
+        padding: 2px 10px 3px 10px;
+    }
+    
+    .mr{
+        font-size: 20px;
+        padding: 15px 10px 15px 5px;
+        border-right: 4px solid #FACA04;
+        margin-right: 5px;
+    }
+    
+    div.right{
+        font-size: 20px;
+        line-height: 15px;
+    }
+    
+    #text{
+        width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
