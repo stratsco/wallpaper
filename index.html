@@ -337,6 +337,15 @@
         selected.style.top = (y_pos - y_elem) + 'px';
       }
     }
+    function _move_elem_touch(e) {
+        x_pos = document.all ? window.event.clientX : e.touches[0].pageX;
+        y_pos = document.all ? window.event.clientY : e.touches[0].pageY;
+
+      if (selected !== null) {
+        selected.style.left = (x_pos - x_elem) + 'px';
+        selected.style.top = (y_pos - y_elem) + 'px';
+      }
+    }
 
     // Destroy the object when we are done
     function _destroy() {
@@ -354,7 +363,7 @@
     };
 
     document.onmousemove = _move_elem;
-    document.ontouchmove = _move_elem;
+    document.ontouchmove = _move_elem_touch;
     document.onmouseup = _destroy;
     document.ontouchend = _destroy;
     input5.click();
