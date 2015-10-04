@@ -115,7 +115,7 @@ nav div {
   cursor: pointer;
 }
 .file-picker input:hover + label,
-.file-picker button:focus + label {
+.file-picker button:hover + label {
   background: #ff9500;
   color: #fff;
 }
