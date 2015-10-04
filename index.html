@@ -142,6 +142,7 @@
     var input13 = document.getElementById("width-input");
     var repeatColor;
     var selColor;
+    var orgWidth = document.getElementById('text').offsetWidth;
 
     function displayColorWheel(nameOption) {
 
@@ -245,7 +246,7 @@
     }
 
     function setWiderLayout() {
-      document.getElementById("text").style.width = (document.getElementById('text').offsetWidth + Number(input13.value)) + "px";
+      document.getElementById("text").style.width = (orgWidth + Number(input13.value)) + "px";
     }
 
 
