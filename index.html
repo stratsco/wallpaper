@@ -70,16 +70,12 @@
       <input type="text" id="pc-txt-picker" value="#000000"></input>
       <br> color name, hex color, or rgba
     </p>
-    
-    <!-- PC Text placeholder
     <p>
       Choose box text
       <br>
       <br>
       <input type="text" id="txt-pc-picker" value="PC" maxlength="2"></input>
     </p>
-    -->
-    
     <p>
       Choose font
       <br>
@@ -126,6 +122,7 @@
     var input6 = document.getElementById("blur-picker");
     var input7 = document.getElementById("font-picker");
     var input8 = document.getElementById("bgc-picker");
+    var input9 = document.getElementById("txt-pc-picker");
     var repeatColor;
     var selColor;
 
@@ -176,6 +173,10 @@
 
       displayColorWheel("pc-txt-picker");
       repeatColor = setTimeout(setPCTxtCol, 100);
+    }
+    
+    function setPCTxt() {
+      document.getElementById("pc").innerHTML = input9.value;
     }
 
     function setFont() {
@@ -258,6 +259,7 @@
     input5.addEventListener("change", setShadow);
     input6.addEventListener("change", setBlur);
     input7.addEventListener("input", setFont);
+    input9.addEventListener("input", setPCTxt);
 
     /* Future events for leaving full screen
     function exitHandler() {
