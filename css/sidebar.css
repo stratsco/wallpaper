@@ -1,59 +1,50 @@
 /* Navigation */
 
-::-webkit-scrollbar
-{
-  width: 12px;  /* for vertical scrollbars */
-  height: 12px; /* for horizontal scrollbars */
+::-webkit-scrollbar {
+  width: 12px;
+  /* for vertical scrollbars */
+  height: 12px;
+  /* for horizontal scrollbars */
 }
-
-::-webkit-scrollbar-track
-{
+::-webkit-scrollbar-track {
   background: rgba(0, 0, 0, 0.1);
 }
-
-::-webkit-scrollbar-thumb
-{
+::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.5);
 }
-
 nav {
-    width: 250px;
-    height: 100%;
-    background: #333;
-    position: fixed;
-    padding-left: 0;
-    top: 0; left: -230px;
-    z-index: 2;
-    transition: left .7s, opacity .7s;
-    -webkit-transition: left .7s, opacity .7s;
-    overflow-x: hidden;
-    opacity: 0;
+  width: 250px;
+  height: 100%;
+  background: #333;
+  position: fixed;
+  padding-left: 0;
+  top: 0;
+  left: -230px;
+  z-index: 2;
+  transition: left .7s, opacity .7s;
+  -webkit-transition: left .7s, opacity .7s;
+  overflow-x: hidden;
+  opacity: 0;
 }
-
 nav:hover {
-    left: 0;
-    opacity: 1;
+  left: 0;
+  opacity: 1;
 }
-
 nav:hover ~ #content {
-    opacity: .3;
+  opacity: .3;
 }
-
 nav a, nav a:hover {
-    text-decoration: none;
+  text-decoration: none;
 }
-
 nav input[type="text"] {
-    padding: 5px;
-    border: none;
-    border-bottom: solid 2px #FACA04;
-    transition: border 0.3s;
-    background: #666;
+  padding: 5px;
+  border: none;
+  border-bottom: solid 2px #FACA04;
+  transition: border 0.3s;
+  background: #666;
 }
-
-navinput[type="text"]:focus,
-nav input[type="text"].focus {
-    border-bottom: solid 2px #ff9500;
+navinput[type="text"]:focus, nav input[type="text"].focus {
+  border-bottom: solid 2px #ff9500;
 }
 
 /* Header */
@@ -61,14 +52,12 @@ nav input[type="text"].focus {
 nav header {
   margin: 40px 20px 30px;
 }
-
 nav header a {
   font-size: 18px;
   font-weight: 300;
   text-transform: uppercase;
-  color: rgba(240,240,240,.7);
+  color: rgba(240, 240, 240, .7);
 }
-
 nav header a:hover {
   color: #eee;
 }
@@ -76,20 +65,18 @@ nav header a:hover {
 /* Options */
 
 nav p {
-    display: block;
-    padding: 16px 20px;
-    font-weight: 600;
-    color: rgba(200,200,200,.5);
-    margin-bottom: -16px;
+  display: block;
+  padding: 16px 20px;
+  font-weight: 600;
+  color: rgba(200, 200, 200, .5);
+  margin-bottom: -16px;
 }
-
 nav p:hover {
-    background: rgba(0,0,0,.1);
-    color: #eee;
+  background: rgba(0, 0, 0, .1);
+  color: #eee;
 }
-
 nav div {
-     margin-left:35px;    
+  margin-left: 35px;
 }
 
 /* File Upload button FIX */
@@ -106,7 +93,7 @@ nav div {
   transition: all .4s;
   cursor: pointer;
 }
-.file-picker input, button{
+.file-picker input, button {
   position: absolute;
   display: inline-block;
   left: 0;
@@ -114,13 +101,13 @@ nav div {
   opacity: 0.01;
   cursor: pointer;
 }
-.file-picker input:hover + label,
-.file-picker button:hover + label {
+.file-picker input:hover + label, .file-picker button:hover + label {
   background: #ff9500;
   color: #fff;
 }
 
 /* Navigation */
+
 
 /*nav ul {
   padding-left: 0;
@@ -143,22 +130,21 @@ nav li a:hover {
 /* Color */
 
 navTop {
-    width: 250px;
-    height: 200px;
-    background: rgba(0, 0, 0, 0);
-    position: fixed;
-    padding-top: 0;
-    top: -240px; left: 0px;
-    z-index: 4;
-    transition: top .7s, background-color .7s;
-    -webkit-transition: top .7s, background-color .7s;
+  width: 250px;
+  height: 200px;
+  background: rgba(0, 0, 0, 0);
+  position: fixed;
+  padding-top: 0;
+  top: -240px;
+  left: 0px;
+  z-index: 4;
+  transition: top .7s, background-color .7s;
+  -webkit-transition: top .7s, background-color .7s;
 }
-
 navTop.open {
-    top: 0;
-    background: #222;
+  top: 0;
+  background: #222;
 }
-
 navTop div {
-     margin-left:50px;    
+  margin-left: 50px;
 }
