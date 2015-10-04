@@ -124,6 +124,13 @@
       colors[0].setAttribute("class", "open");
       selColor = nameOption;
     }
+    
+    function disableOld() {
+            
+      var colors = document.getElementsByTagName("navTop");
+      colors[0].removeAttribute("class");
+      clearTimeout(repeatColor);
+    }
 
     function setBackgroundImage() {
 
@@ -221,10 +228,10 @@
 
     document.getElementById("go-button").addEventListener("click", hideBox);
     input.addEventListener("change", setBackgroundImage);
-    input2.addEventListener("click", setHlCol);
-    input8.addEventListener("click", setBgc);
-    input3.addEventListener("click", setTxtCol);
-    input4.addEventListener("click", setPCTxtCol);
+    input2.addEventListener("click", function(){disableOld();setHlCol();});
+    input8.addEventListener("click", function(){disableOld();setBgc();});
+    input3.addEventListener("click", function(){disableOld();setTxtCol();});
+    input4.addEventListener("click", function(){disableOld();setPCTxtCol();});
     input5.addEventListener("change", setShadow);
     input6.addEventListener("change", setBlur);
     input7.addEventListener("input", setFont);
