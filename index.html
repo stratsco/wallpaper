@@ -6,283 +6,355 @@
   <meta charset="utf-8">
   <meta property="og:image" content="http://pltarun.github.io/pcmr/pcmr.png" />
   <title>PC Master Race</title>
-  <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
-  <style>
-    body {
-      color: white;
-      font-size: 72px;
-      font-family: Roboto;
-    }
-
-    *:-webkit-full-screen {
-      cursor: none;
-    }
-
-    *:-moz-full-screen {
-      cursor: none;
-    }
-
-    *:-ms-fullscreen {
-      cursor: none;
-    }
-
-    *:fullscreen {
-      cursor: none;
-    }
-
-    .pc {
-      background-color: #FACA04;
-      padding: 15px 20px 15px 20px;
-      color: black;
-      font-weight: bold;
-    }
-
-    .mr {
-      padding: 15px 15px 15px 0px;
-      border-right: 2px solid #FACA04;
-    }
-
-    div.left {
-      float: left;
-    }
-
-    div.right {
-      float: right;
-      font-size: 40px;
-      font-weight: lighter;
-    }
-
-    #text {
-      position: fixed;
-      width: 755px;
-      top: 50%;
-      left: 50%;
-      /* bring your own prefixes */
-      transform: translate(-50%, -50%);
-    }
-
-    #text * {
-      cursor: move;
-    }
-
-    #gen-box {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      padding: 20px;
-      background-color: rgba(175, 175, 175, 0.8);
-      border-radius: 20px;
-      font-size: 12px;
-      max-width: 250px;
-    }
-
-    #cont {
-      position: fixed;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      background-color: black;
-      background-size: cover;
-    }
-
-    @media only screen and (max-width: 1000px) {
-      /* not yet */
-    }
-  </style>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700' rel='stylesheet' type='text/css'>
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+  <link href="css/sidebar.css" rel="stylesheet" type="text/css">
 </head>
-
+      
 <body id="body">
-  <div id="cont">
-  </div>
-  <div id="text">
-    <div class="left">
-      <span id="pc" class="pc">PC</span>
-      <span id="mr" class="mr">Master Race</span>
-    </div>
-    <div class="right">
-      <span>behold
-        <br>true glory</span>
-    </div>
-  </div>
-  <div id="gen-box">
-    Choose a background image:
-    <br>
-    <input id="file-picker" type="file"></input>
-    <br> Choose a flat background colour
-    <br> (type color name, hex color, or rgba):
-    <br>
-    <input type="text" id="bgc-picker" value="#000000"></input>
-    <br> Choose a highlight colour
-    <br> (type color name, hex color, or rgba):
-    <br>
-    <input type="text" id="hl-picker" value="#FACA04"></input>
-    <br> Choose a text colour
-    <br> (type color name, hex color, or rgba):
-    <br>
-    <input type="text" id="txt-picker" value="#FFFFFF"></input>
-    <br> Choose PC text colour
-    <br> (type color name, hex color, or rgba):
-    <br>
-    <input type="text" id="pc-txt-picker" value="#000000"></input>
-    <br> Choose font
-    <br> (type font name, may cause layout issues):
-    <br>
-    <input type="text" id="font-picker" value="Roboto"></input>
-    <br>
-    <input type="checkbox" id="shadow-picker">Shadow</input>
-    <br>
-    <input type="checkbox" id="blur-picker">Blur</input>
-    <br> <span style="color: blue; font-weight: bold">Drag the text to move it.</span>
-    <br>
-    <button id="go-button">Hide this box</button>
-    <br> When you click the button above, the page will go full screen. Screenshot the page and you can set it as your desktop background. Exit fullscreen with the esc key. If things look wonky, try your browser's zoom out function.
-  </div>
-  <script>
-    var input = document.getElementById("file-picker");
-    var input2 = document.getElementById("hl-picker");
-    var input3 = document.getElementById("txt-picker");
-    var input4 = document.getElementById("pc-txt-picker");
-    var input5 = document.getElementById("shadow-picker");
-    var input6 = document.getElementById("blur-picker");
-    var input7 = document.getElementById("font-picker");
-    var input8 = document.getElementById("bgc-picker");
 
-    function setBackgroundImage() {
-      if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function(e) {
-          document.getElementById("cont").style.backgroundImage = 'url(' + e.target.result + ')';
+    <nav>
+        <div class="icon fi-list"></div>
+           
+        <navTop>
+            <div class="wrapper">
+              <br><br>
+              <canvas width="512" height="512" id="input"></canvas>
+              <!--<h4 id="output">hsl(0, 50%, 50%)</h4>
+              <p id="lockStat">Click to lock</p>-->
+            </div>
+        </navTop>   
+           
+        <header><a href="#">Drag the text to put it where you want</a></header>
+        
+        <!--<p>
+            Choose a background image:
+            <br><br>
+            <input id="file-picker" type="file"></input>
+        </p>-->
+        <p class="file-picker">
+            Choose a background image
+            <br><br>
+            <input id="file-picker" type="file"></input>
+            <label for="file-picker">Upload your image</label>
+            <br><br>
+        </p>
+        <p>
+            Choose a flat background colour
+            <br><br>
+            <input type="text" id="bgc-picker" value="#000000"></input>
+            <br>
+            color name, hex color, or rgba
+        </p>
+        <p>
+            Choose a highlight colour
+            <br><br>
+            <input type="text" id="hl-picker" value="#FACA04"></input>
+            <br>
+            color name, hex color, or rgba
+        </p>
+        <p>
+            Choose a text colour
+            <br><br>
+            <input type="text" id="txt-picker" value="#FFFFFF"></input>
+            <br>
+            color name, hex color, or rgba
+        </p>
+        <p>
+            Choose PC text colour
+            <br><br>
+            <input type="text" id="pc-txt-picker" value="#000000"></input>
+            color name, hex color, or rgba
+        </p>
+        <p>
+            Choose font
+            <br><br>
+            <input type="text" id="font-picker" value="Roboto"></input>
+            <br>
+            font name, may cause layout issues
+        </p>
+        <p>
+            <input type="checkbox" id="shadow-picker">Shadow</input>
+            <br>
+            <input type="checkbox" id="blur-picker">Blur</input>
+        </p>
+        <p>
+           <button id="go-button">Go Full Screen</button>
+           <br><br>
+           With the button above, the page will go full screen.
+           Screenshot the page and you can set it as your desktop background.
+           Exit fullscreen with the esc key.
+           If things look wonky, try your browser's zoom out function. 
+        </p>            
+    </nav>
+    
+    <!-- Background -->
+    <div id="cont"></div>
+    
+    <!-- PCMR Logo -->
+    <div id="text">
+        <div class="left">
+            <span id="pc" class="pc">PC</span>
+            <span id="mr" class="mr">MASTER RACE</span>
+        </div>
+    
+        <div class="right">
+            <span>behold</span>
+            <br>
+            <span id="glory">true glory</span>
+        </div>
+    </div>
+  
+    <script>
+        var input = document.getElementById("file-picker");
+        var input2 = document.getElementById("hl-picker");
+        var input3 = document.getElementById("txt-picker");
+        var input4 = document.getElementById("pc-txt-picker");
+        var input5 = document.getElementById("shadow-picker");
+        var input6 = document.getElementById("blur-picker");
+        var input7 = document.getElementById("font-picker");
+        var input8 = document.getElementById("bgc-picker");
+        var repeatColor;
+        var selColor;
+    
+        function displayColorWheel(nameOption) {
+            
+            var colors = document.getElementsByTagName("navTop");
+            colors[0].setAttribute("class", "open");
+            selColor = nameOption;
+        }
+        
+        function setBackgroundImage() {
+      
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    document.getElementById("cont").style.backgroundImage = 'url(' + e.target.result + ')';
+                };
+            
+                reader.readAsDataURL(input.files[0]);
+            };
         };
+    
+        function setHlCol() {
+            document.getElementById("pc").style.backgroundColor = input2.value;
+            document.getElementById("mr").style.borderRightColor = input2.value;
+            
+            displayColorWheel("hl-picker");
+            repeatColor = setTimeout(setHlCol, 100);             
+        }
+    
+        function setTxtCol() {
+            document.getElementById("text").style.color = input3.value;
+            
+            displayColorWheel("txt-picker");
+            repeatColor = setTimeout(setTxtCol, 100);
+        }
+    
+        function setPCTxtCol() {
+            document.getElementById("pc").style.color = input4.value;
+            
+            displayColorWheel("pc-txt-picker");
+            repeatColor = setTimeout(setPCTxtCol, 100);
+        }
+    
+        function setFont() {
+            document.body.style.fontFamily = input7.value;
+        }
+    
+        function setBgc() {
+            document.getElementById("cont").style.backgroundColor = input8.value;
+            
+            displayColorWheel("bgc-picker");
+            repeatColor = setTimeout(setBgc, 100);
+        }
+    
+        function setShadow() {
+            
+            if (input5.checked) {
+                document.getElementById("text").style.textShadow = "0 0 3px #000";
+                document.getElementById("pc").style.textShadow = "0 0 0";
+            } else {
+                document.getElementById("text").style.textShadow = "";
+            }
+        }
+    
+        function setBlur() {
+            
+            if (input6.checked) {
+                document.getElementById("cont").style.webkitFilter = "blur(5px)";
+                document.getElementById("cont").style.mozFilter = "blur(5px)";
+                document.getElementById("cont").style.filter = "blur(5px)";
+                document.getElementById("cont").style.transform = "scale(1.01)"
+            } else {
+                document.getElementById("cont").style.webkitFilter = "";
+                document.getElementById("cont").style.mozFilter = "";
+                document.getElementById("cont").style.filter = "";
+                document.getElementById("cont").style.transform = ""
+            }
+        }
+        
+        function hideBox() {
+            var elem = document.getElementById("body");
+            /*document.getElementById("gen-box").style.display = "none";*/
+            
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.msRequestFullscreen) {
+                elem.msRequestFullscreen();
+            } else if (elem.mozRequestFullScreen) {
+                elem.mozRequestFullScreen();
+            } else if (elem.webkitRequestFullscreen) {
+                elem.webkitRequestFullscreen();
+            };
+        };
+    
+        document.getElementById("go-button").addEventListener("click", hideBox);
+        input.addEventListener("change", setBackgroundImage);
+        input2.addEventListener("click", setHlCol);
+        input8.addEventListener("click", setBgc);
+        input3.addEventListener("click", setTxtCol);
+        input4.addEventListener("click", setPCTxtCol);
+        input5.addEventListener("change", setShadow);
+        input6.addEventListener("change", setBlur);
+        input7.addEventListener("input", setFont);
+    
+        function exitHandler() {
+            if ((document.webkitFullscreenElement || document.mozFullscreenElement || document.fullscreenElement) == null) {
+                /*document.getElementById("gen-box").style.display = "block";*/
+            }
+        }
+    
+        document.addEventListener('webkitfullscreenchange', exitHandler, false);
+        document.addEventListener('mozfullscreenchange', exitHandler, false);
+        document.addEventListener('fullscreenchange', exitHandler, false);
+        document.addEventListener('MSFullscreenChange', exitHandler, false);
+    
+        // thanks to http://jsfiddle.net/tovic/Xcb8d/light/
+        var selected = null, // Object of the element to be moved
+        x_pos = 0,
+        y_pos = 0, // Stores x & y coordinates of the mouse pointer
+        x_elem = 0,
+        y_elem = 0; // Stores top, left values (edge) of the element
+        // Will be called when user starts dragging an element
+        function _drag_init(elem) {
+            // Store the object of the element which needs to be moved
+            selected = elem;
+            x_elem = x_pos - selected.offsetLeft;
+            y_elem = y_pos - selected.offsetTop;
+        }
+    
+        // Will be called when user dragging an element
+        function _move_elem(e) {
+            x_pos = document.all ? window.event.clientX : e.pageX;
+            y_pos = document.all ? window.event.clientY : e.pageY;
+            
+            if (selected !== null) {
+                selected.style.left = (x_pos - x_elem) + 'px';
+                selected.style.top = (y_pos - y_elem) + 'px';
+            }
+        }
+    
+        // Destroy the object when we are done
+        function _destroy() {
+            selected = null;
+        }
+    
+        // Bind the functions...
+        document.getElementById('text').onmousedown = function() {
+            _drag_init(this);
+            return false;
+        };
+   
+        document.onmousemove = _move_elem;
+        document.onmouseup = _destroy;
+        input5.click();
+        
+  
+  
+    // Color Picker 
+    // Original by Danie Clawson http://codepen.io/cl4ws0n/pen/GwFiC
 
-        reader.readAsDataURL(input.files[0]);
-      };
-    };
+        
+        var canvas = document.getElementById("input"),
+        //lock = document.getElementById("lockStat"),
+        ctx = canvas.getContext("2d")
+        
+        canCen = {
+            x: canvas.width/2,
+            y: canvas.height/2
+        },
+        
+        mouseAngle = 0,
+        mousePos = {x: 0, y: 0},
+        mouseDist = 50,
+        useMouse = true,
 
-    function setHlCol() {
-      document.getElementById("pc").style.backgroundColor = input2.value;
-      document.getElementById("mr").style.borderRightColor = input2.value;
-    }
+        canvas.addEventListener("mousemove", function(e) {
+            if(useMouse) {
+                var clientRect = canvas.getBoundingClientRect(),
+                x = (e.clientX - clientRect.left) * (canvas.width / canvas.offsetWidth),
+                y = (e.clientY - clientRect.top) * (canvas.height / canvas.offsetHeight),
+                n = 180 + (Math.atan2(canCen.y - y, canCen.x - x)) * 180 / Math.PI;
 
-    function setTxtCol() {
-      document.getElementById("text").style.color = input3.value;
-    }
+                mouseDist = Math.round((Math.min(canCen.y - 64,Math.sqrt(Math.pow(canCen.x - x, 2) + Math.pow(canCen.y - y, 2)))/(canCen.y-64))*100);
+                mouseAngle = Math.round(n % 360);
+                mousePos.x = x;
+                mousePos.y = y;
+                
+                output = document.getElementById(selColor),
+                output.style.color = output.value =  "hsl("+mouseAngle+","+mouseDist+"%, 50%)";
+            }
+        }, false);
 
-    function setPCTxtCol() {
-      document.getElementById("pc").style.color = input4.value;
-    }
+        canvas.addEventListener("mouseup", function() {
+            
+            var colors = document.getElementsByTagName("navTop");
+            useMouse = !useMouse;
+            
+            if(!useMouse) {
+                //lock.innerHTML = "Click to lock";
+                colors[0].removeAttribute("class");
+                clearTimeout(repeatColor);
+            } 
+            //else {
+                //lock.innerHTML = "Click to unlock";
+            //}
+        },false);
 
-    function setFont() {
-      document.body.style.fontFamily = input7.value;
-    }
+        function animate() {
+            ctx.clearRect(0,0,canvas.width,canvas.height);
 
-    function setBgc() {
-      document.getElementById("cont").style.backgroundColor = input8.value;
-    }
+            for(var i = 0; i < 360; i++) {
+                var scaleBack;
+                ctx.strokeStyle = ctx.fillStyle = "hsl("+i+","+mouseDist+"%, 50%)";
+                
+                if(i == mouseAngle) {
+                    scaleBack = 32;
+                    ctx.lineWidth = 10;
+                    ctx.beginPath();
+                    ctx.arc((canCen.x) + (canCen.x-scaleBack)*Math.cos((i/360)*Math.PI*2),
+                    (canCen.y) + (canCen.y-scaleBack)*Math.sin((i/360)*Math.PI*2), 16, 0, Math.PI*2);
+                    ctx.fill();
+                } else {
+                    scaleBack = 64;
+                    ctx.lineWidth = 5;
+                }
 
-    function setShadow() {
-      if (input5.checked) {
-        document.getElementById("text").style.textShadow = "0 0 3px #000";
-        document.getElementById("pc").style.textShadow = "0 0 0";
-      } else {
-        document.getElementById("text").style.textShadow = "";
-      }
-    }
+                ctx.beginPath();
+                ctx.moveTo(canCen.x, canCen.y);
+                
+                ctx.lineTo(
+                    (canCen.x) + (canCen.x-scaleBack)*Math.cos((i/360)*Math.PI*2),
+                    (canCen.y) + (canCen.y-scaleBack)*Math.sin((i/360)*Math.PI*2)
+                );
 
-    function setBlur() {
-      if (input6.checked) {
-        document.getElementById("cont").style.webkitFilter = "blur(5px)";
-        document.getElementById("cont").style.mozFilter = "blur(5px)";
-        document.getElementById("cont").style.filter = "blur(5px)";
-        document.getElementById("cont").style.transform = "scale(1.01)"
-      } else {
-        document.getElementById("cont").style.webkitFilter = "";
-        document.getElementById("cont").style.mozFilter = "";
-        document.getElementById("cont").style.filter = "";
-        document.getElementById("cont").style.transform = ""
-      }
-    }
-
-    function hideBox() {
-      var elem = document.getElementById("body");
-      document.getElementById("gen-box").style.display = "none";
-      if (elem.requestFullscreen) {
-        elem.requestFullscreen();
-      } else if (elem.msRequestFullscreen) {
-        elem.msRequestFullscreen();
-      } else if (elem.mozRequestFullScreen) {
-        elem.mozRequestFullScreen();
-      } else if (elem.webkitRequestFullscreen) {
-        elem.webkitRequestFullscreen();
-      };
-    };
-
-    document.getElementById("go-button").addEventListener("click", hideBox);
-    input.addEventListener("change", setBackgroundImage);
-    input2.addEventListener("input", setHlCol);
-    input8.addEventListener("input", setBgc);
-    input3.addEventListener("input", setTxtCol);
-    input4.addEventListener("input", setPCTxtCol);
-    input5.addEventListener("change", setShadow);
-    input6.addEventListener("change", setBlur);
-    input7.addEventListener("input", setFont);
-
-    function exitHandler() {
-      if ((document.webkitFullscreenElement || document.mozFullscreenElement || document.fullscreenElement) == null) {
-        document.getElementById("gen-box").style.display = "block";
-      }
-    }
-
-
-
-    document.addEventListener('webkitfullscreenchange', exitHandler, false);
-    document.addEventListener('mozfullscreenchange', exitHandler, false);
-    document.addEventListener('fullscreenchange', exitHandler, false);
-    document.addEventListener('MSFullscreenChange', exitHandler, false);
-
-
-    // thanks to http://jsfiddle.net/tovic/Xcb8d/light/
-
-    var selected = null, // Object of the element to be moved
-      x_pos = 0,
-      y_pos = 0, // Stores x & y coordinates of the mouse pointer
-      x_elem = 0,
-      y_elem = 0; // Stores top, left values (edge) of the element
-
-    // Will be called when user starts dragging an element
-    function _drag_init(elem) {
-      // Store the object of the element which needs to be moved
-      selected = elem;
-      x_elem = x_pos - selected.offsetLeft;
-      y_elem = y_pos - selected.offsetTop;
-    }
-
-    // Will be called when user dragging an element
-    function _move_elem(e) {
-      x_pos = document.all ? window.event.clientX : e.pageX;
-      y_pos = document.all ? window.event.clientY : e.pageY;
-      if (selected !== null) {
-        selected.style.left = (x_pos - x_elem) + 'px';
-        selected.style.top = (y_pos - y_elem) + 'px';
-      }
-    }
-
-    // Destroy the object when we are done
-    function _destroy() {
-      selected = null;
-    }
-
-    // Bind the functions...
-    document.getElementById('text').onmousedown = function() {
-      _drag_init(this);
-      return false;
-    };
-
-    document.onmousemove = _move_elem;
-    document.onmouseup = _destroy;
-    input5.click();
-  </script>
+                ctx.stroke();
+            }
+            requestAnimationFrame(animate);
+        }
+        animate();
+    </script>
 </body>
-
 </html>

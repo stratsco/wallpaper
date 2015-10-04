@@ -1,0 +1,151 @@
+/* Navigation */
+
+::-webkit-scrollbar
+{
+  width: 12px;  /* for vertical scrollbars */
+  height: 12px; /* for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track
+{
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb
+{
+  background: rgba(0, 0, 0, 0.5);
+}
+
+nav {
+    width: 250px;
+    height: 100%;
+    background: #333;
+    position: fixed;
+    padding-left: 0;
+    top: 0; left: -230px;
+    z-index: 2;
+    transition: left .7s, opacity .7s;
+    -webkit-transition: left .7s, opacity .7s;
+    overflow-x: hidden;
+    opacity: 0;
+}
+
+nav:hover {
+    left: 0;
+    opacity: 1;
+}
+
+nav:hover ~ #content {
+    opacity: .3;
+}
+
+nav a, nav a:hover {
+    text-decoration: none;
+}
+
+
+/* Header */
+
+nav header {
+  margin: 40px 20px 30px;
+}
+
+nav header a {
+  font-size: 18px;
+  font-weight: 300;
+  text-transform: uppercase;
+  color: rgba(240,240,240,.7);
+}
+
+nav header a:hover {
+  color: #eee;
+}
+
+/* Options */
+
+nav p {
+    display: block;
+    padding: 16px 20px;
+    font-weight: 600;
+    color: rgba(200,200,200,.5);
+    margin-bottom: -16px;
+}
+
+nav p:hover {
+    background: rgba(0,0,0,.1);
+    color: #eee;
+}
+
+nav div {
+     margin-left:35px;    
+}
+
+/* File Upload button FIX */
+
+.file-picker {
+  position: relative;
+}
+.file-picker label {
+  background: #FACA04;
+  padding: 5px 20px;
+  color: #000;
+  font-weight: bold;
+  font-size: .9em;
+  transition: all .4s;
+}
+.file-picker input {
+  position: absolute;
+  display: inline-block;
+  left: 0;
+  top: 0;
+  opacity: 0.01;
+  cursor: pointer;
+}
+.file-picker input:hover + label,
+.file-picker input:focus + label {
+  background: #ff9500;
+  color: #fff;
+}
+
+/* Navigation */
+
+/*nav ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+nav li a {
+    display: block;
+    padding: 16px 20px;
+    font-weight: 600;
+    color: rgba(200,200,200,.5);
+}
+
+nav li a:hover {
+    background: rgba(0,0,0,.1);
+    color: #eee;
+}*/
+
+
+/* Color */
+
+navTop {
+    width: 250px;
+    height: 200px;
+    background: rgba(0, 0, 0, 0);
+    position: fixed;
+    padding-top: 0;
+    top: -240px; left: 0px;
+    z-index: 4;
+    transition: top .7s, background-color .7s;
+    -webkit-transition: top .7s, background-color .7s;
+}
+
+navTop.open {
+    top: 0;
+    background: #222;
+}
+
+navTop div {
+     margin-left:50px;    
+}

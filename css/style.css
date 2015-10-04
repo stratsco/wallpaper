@@ -1,0 +1,106 @@
+body {
+    color: white;
+    font-size: 12px;
+    font-family: Roboto;
+}
+
+#cont {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #000000;
+    background-size: cover;
+    z-index: -9999; 
+}
+
+*:-webkit-full-screen {
+    cursor: none;
+}
+
+*:-moz-full-screen {
+    cursor: none;
+}
+
+*:-ms-fullscreen {
+    cursor: none;
+}
+
+*:fullscreen {
+    cursor: none;
+}
+
+.pc {
+    background-color: #FACA04;
+    padding: 1px 20px 1px 20px;
+    color: black;
+    font-weight: bold;
+    font-size: 72px;
+}
+
+.mr {
+    padding: 30px 25px 30px 25px;
+    border-right: 6px solid #FACA04;
+    font-size: 72px;
+    font-weight: 300;
+}
+
+div.left {
+    float: left;
+}
+
+div.right {
+    float: right;
+    font-size: 50px;
+    line-height: 45px;
+    font-weight: 300;
+}
+
+div.right #glory {
+    font-weight: 100;
+}
+    
+#text {
+    position: fixed;
+    width: 900px;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+}
+
+#text * {
+    cursor: move;
+}
+
+/* Deprecated */
+/*#gen-box {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 20px;
+    background-color: rgba(175, 175, 175, 0.8);
+    border-radius: 20px;
+    font-size: 12px;
+    max-width: 250px;
+}*/
+    
+@media only screen and (max-width: 1000px) {
+    /* not yet */
+}
+
+/* Color Picker */
+/* Originaly by Danie Clawson http://codepen.io/cl4ws0n/pen/GwFiC*/
+
+.wrapper {
+    width: 145px;
+    text-align: center;
+}
+
+canvas {
+    width: 100%;
+    background:  hsl(0,0%,50%);
+    border-radius: 50%;
+    cursor: pointer;
+}
