@@ -113,6 +113,8 @@
     </div>
   </div>
 
+  <div id="options-help">Move cursor to left edge to show options</div>
+
   <script>
     var input = document.getElementById("file-picker");
     var input2 = document.getElementById("hl-picker");
@@ -174,7 +176,7 @@
       displayColorWheel("pc-txt-picker");
       repeatColor = setTimeout(setPCTxtCol, 100);
     }
-    
+
     function setPCTxt() {
       document.getElementById("pc").innerHTML = input9.value;
     }
@@ -216,6 +218,7 @@
     }
 
     function hideBox() {
+      document.getElementById("options-help").style.display = "none";
       var elem = document.getElementById("body");
       if ((document.webkitFullscreenElement || document.mozFullscreenElement || document.fullscreenElement) == null) {
         if (elem.requestFullscreen) {
