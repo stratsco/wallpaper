@@ -75,7 +75,7 @@
       Choose box text
       <br>
       <br>
-      <input type="text" id="txt-pc-picker" value="PC" maxlength="2"></input>
+      <input type="text" id="txt-pc-picker" value="PC"></input>
       <input type="text" id="txt-mr-picker" value="MASTER RACE"></input>
       <input type="text" id="txt-behold-picker" value="behold"></input>
       <input type="text" id="txt-glory-picker" value="true glory"></input>
@@ -85,12 +85,19 @@
       <br>
       <br>
       <input type="text" id="font-picker" value="Roboto"></input>
-      <br> font name, may cause layout issues
     </p>
     <p>
-      <input type="checkbox" id="shadow-picker">Shadow</input>
+      Increase width to fix overspill:
       <br>
-      <input type="checkbox" id="blur-picker">Blur</input>
+      <br>
+      <input id="width-input" type="range" min="0" max="1000" value="0"></input>
+      <br> Adjust this slider if text overflows.
+    </p>
+    <p>
+      <input type="checkbox" id="shadow-picker"> Shadow</input>
+    </p>
+    <p>
+      <input type="checkbox" id="blur-picker"> Blur</input>
     </p>
     <p class="file-picker">
       <button id="go-button"></button>
@@ -132,6 +139,7 @@
     var input10 = document.getElementById("txt-mr-picker");
     var input11 = document.getElementById("txt-behold-picker");
     var input12 = document.getElementById("txt-glory-picker");
+    var input13 = document.getElementById("width-input");
     var repeatColor;
     var selColor;
 
@@ -202,11 +210,6 @@
 
     function setFont() {
       document.body.style.fontFamily = input7.value;
-      if (input7.value.indexOf("omic") > -1) {
-        document.getElementById("text").style.width = "950px";
-      } else {
-        document.getElementById("text").style.width = "";
-      }
     }
 
     function setBgc() {
@@ -240,6 +243,11 @@
         document.getElementById("cont").style.transform = ""
       }
     }
+
+    function setWiderLayout() {
+      document.getElementById("text").style.width = (900 + Number(input13.value)) + "px";
+    }
+
 
     function hideBox() {
       document.getElementById("options-help").style.display = "none";
@@ -299,6 +307,7 @@
     input10.addEventListener("input", setMRTxt);
     input11.addEventListener("input", setBeholdTxt);
     input12.addEventListener("input", setGloryTxt);
+    input13.addEventListener("input", setWiderLayout);
 
     /* Future events for leaving full screen
     function exitHandler() {
@@ -329,17 +338,18 @@
 
     // Will be called when user dragging an element
     function _move_elem(e) {
-        x_pos = document.all ? window.event.clientX : e.pageX;
-        y_pos = document.all ? window.event.clientY : e.pageY;
+      x_pos = document.all ? window.event.clientX : e.pageX;
+      y_pos = document.all ? window.event.clientY : e.pageY;
 
       if (selected !== null) {
         selected.style.left = (x_pos - x_elem) + 'px';
         selected.style.top = (y_pos - y_elem) + 'px';
       }
     }
+
     function _move_elem_touch(e) {
-        x_pos = document.all ? window.event.clientX : e.touches[0].pageX;
-        y_pos = document.all ? window.event.clientY : e.touches[0].pageY;
+      x_pos = document.all ? window.event.clientX : e.touches[0].pageX;
+      y_pos = document.all ? window.event.clientY : e.touches[0].pageY;
 
       if (selected !== null) {
         selected.style.left = (x_pos - x_elem) + 'px';
