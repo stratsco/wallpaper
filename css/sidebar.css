@@ -43,6 +43,18 @@ nav a, nav a:hover {
     text-decoration: none;
 }
 
+nav input[type="text"] {
+    padding: 5px;
+    border: none;
+    border-bottom: solid 2px #FACA04;
+    transition: border 0.3s;
+    background: #666;
+}
+
+navinput[type="text"]:focus,
+nav input[type="text"].focus {
+    border-bottom: solid 2px #ff9500;
+}
 
 /* Header */
 
