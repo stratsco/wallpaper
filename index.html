@@ -308,15 +308,8 @@
 
     // Will be called when user dragging an element
     function _move_elem(e) {
-      var x_pos = "";
-      var y_pos = "";
-      if (e.originalEvent.touches) {
-        x_pos = document.all ? window.event.clientX : e.originalEvent.touches[0].pageX;
-        y_pos = document.all ? window.event.clientY : e.originalEvent.touches[0].pageY;
-      } else {
         x_pos = document.all ? window.event.clientX : e.pageX;
         y_pos = document.all ? window.event.clientY : e.pageY;
-      }
 
       if (selected !== null) {
         selected.style.left = (x_pos - x_elem) + 'px';
