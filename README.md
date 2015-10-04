@@ -1,4 +1,3 @@
 # PC Master Race wallpaper generator
-
-You can add a wallpaper to the PCMR logo, and you can change it's colours too!
-reddit comments: https://redd.it/3ndhvr
+Make your own customised PC Master Race wallpaper!
+Get started at http://pltarun.github.io/pcmr or view the Reddit thread at https://redd.it/3ndhvr.
