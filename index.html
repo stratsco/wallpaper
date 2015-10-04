@@ -321,6 +321,19 @@
     input12.addEventListener("input", setGloryTxt);
     input13.addEventListener("input", setWiderLayout);
     input14.addEventListener("input", setFontSize);
+    
+    function doCentre() {
+      var w = window.innerWidth;
+      var h = window.innerHeight;
+      var d = document.getElementById('text');
+      var divW = d.offsetWidth;
+      var divH = d.offsetHeight
+      d.style.top = (h / 2) - (divH / 2) + "px";
+      d.style.left = (w / 2) - (divW / 2) + "px";
+    };
+
+    document.body.onload = doCentre();
+    window.addEventListener("resize", doCentre);
 
     /* Future events for leaving full screen
     function exitHandler() {
@@ -343,7 +356,7 @@
       y_elem = 0; // Stores top, left values (edge) of the element
     // Will be called when user starts dragging an element
     function _drag_init(elem) {
-      document.body.onresize = false;
+      window.removeEventListener("resize", doCentre);
       // Store the object of the element which needs to be moved
       selected = elem;
       x_elem = x_pos - selected.offsetLeft;
@@ -477,20 +490,6 @@
       requestAnimationFrame(animate);
     }
     animate();
-
-
-    function doCentre() {
-      var w = window.innerWidth;
-      var h = window.innerHeight;
-      var d = document.getElementById('text');
-      var divW = d.offsetWidth;
-      var divH = d.offsetHeight
-      d.style.top = (h / 2) - (divH / 2) + "px";
-      d.style.left = (w / 2) - (divW / 2) + "px";
-    };
-
-    window.onload = doCentre();
-    document.body.onresize = doCentre();
   </script>
 </body>
 
